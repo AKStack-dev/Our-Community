@@ -32,11 +32,16 @@ export const SkillsSection = () => {
   const filteredSkills = skills.filter(
     (skill) => activeCategory === "all" || skill.category === activeCategory
   );
+
+  const getSkillBarGradient = (level) => {
+    return `linear-gradient(to right, #06b6d4, #3b82f6, #8b5cf6)`; // cyan to indigo gradient
+  };
+
   return (
     <section id="skills" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          What we  <span className="text-primary"> Implement</span>
+          What we <span className="text-primary">Implement</span>
         </h2>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -48,7 +53,7 @@ export const SkillsSection = () => {
                 "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/70 text-forefround hover:bd-secondary"
+                  : "bg-secondary/70 text-foreground hover:bg-secondary"
               )}
             >
               {category}
@@ -60,22 +65,20 @@ export const SkillsSection = () => {
           {filteredSkills.map((skill, key) => (
             <div
               key={key}
-              className="bg-card p-6 rounded-lg shadow-xs card-hover"
+              className="bg-card p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg"
             >
               <div className="text-left mb-4">
-                <h3 className="font-semibold text-lg"> {skill.name}</h3>
-              </div>
-              <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
-                <div
-                  className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
-                  style={{ width: skill.level + "%" }}
-                />
+                <h3 className="font-semibold text-lg">{skill.name}</h3>
               </div>
 
-              <div className="text-right mt-1">
-                <span className="text-sm text-muted-foreground">
-                  {skill.level}%
-                </span>
+              <div className="w-full bg-secondary/40 h-3 rounded-full overflow-hidden">
+                <div
+                  className="h-3 rounded-full transition-all duration-700 ease-out"
+                  style={{
+                    width: `${skill.level}%`,
+                    background: getSkillBarGradient(skill.level),
+                  }}
+                />
               </div>
             </div>
           ))}
