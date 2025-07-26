@@ -33,7 +33,7 @@ export const Home = () => {
   }
 
   return (
-    <div className="bg-background text-foreground min-h-screen overflow-x-auto" style={{ minWidth: "1280px" }}>
+    <div className="bg-background text-foreground min-h-screen overflow-x-auto" style={{ minWidth: "1400px" }}>
       <ThemeToggle />
       <StarBackground />
       <Navbar />
