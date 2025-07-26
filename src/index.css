@@ -164,6 +164,6 @@
 
 /* src/index.css or global.css */
 html, body {
-  min-width: 1024px;
+  min-width: 1280px;
   overflow-x: auto;
 }
