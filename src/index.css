@@ -160,10 +160,3 @@
   padding: 0;
   text-align: center;
 }
-
-
-/* src/index.css or global.css */
-html, body {
-  min-width: 1400px;
-  overflow-x: auto;
-}

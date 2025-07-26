@@ -10,17 +10,21 @@ import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
 import LoadingScreen from "../components/LoadingScreen";
 
-// src/pages/Home.jsx
 export const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
-    const loadingDuration = 5000;
-    const fadeDuration = 1500;
+    const loadingDuration = 5000; // 5 seconds
+    const fadeDuration = 1500; // 1.5s fade
 
-    const timer1 = setTimeout(() => setIsFadingOut(true), loadingDuration);
-    const timer2 = setTimeout(() => setIsLoading(false), loadingDuration + fadeDuration);
+    const timer1 = setTimeout(() => {
+      setIsFadingOut(true); // start fade
+    }, loadingDuration);
+
+    const timer2 = setTimeout(() => {
+      setIsLoading(false); // fully hide loader
+    }, loadingDuration + fadeDuration);
 
     return () => {
       clearTimeout(timer1);
@@ -33,7 +37,7 @@ export const Home = () => {
   }
 
   return (
-    <div className="bg-background text-foreground min-h-screen overflow-x-auto" style={{ minWidth: "1400px" }}>
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <ThemeToggle />
       <StarBackground />
       <Navbar />
@@ -48,4 +52,3 @@ export const Home = () => {
     </div>
   );
 };
-
